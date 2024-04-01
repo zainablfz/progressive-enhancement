@@ -1,43 +1,157 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
-	<head>
-		<meta charset="utf-8">
-		<title>Carrousel / Progressive Enhancement / FDND</title>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<link href="assets/styles.css" rel="stylesheet">
-		<style>
-			/* Schrijf hier gewoon je CSS voor dit component */
+  <head>
+    <meta charset="utf-8" />
+    <title>Carrousel / Progressive Enhancement / FDND</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/styles.css" rel="stylesheet" />
+    <style>
+      /* Schrijf hier gewoon je CSS voor dit component */
+      article {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 3em;
+        margin-block: 3em;
+        padding: 3em;
+        text-align: center;
+        background: var(--yellow);
+        width: 30em;
+        flex: 30em 0 0;
+        width: 70vw;
+        flex-basis: 70vw;
+        scroll-snap-align: center;
+        margin-bottom: 0;
+      }
 
-			/* Hint: welk layout model is handig om content naast elkaar te zetten? */
-		</style>
-		<script type="module">
-			/* Schrijf hier eventueel je client-side JavaScript */
-		</script>
-	</head>
-	<body>
-		<h1>Carrousel</h1>
+      article:nth-of-type(2n) {
+        background: var(--purple);
+      }
 
-		<!-- Content
+      article:nth-of-type(3n + 1) {
+        background: var(--green);
+      }
 
-		“Websites leren bouwen, én praktijkervaring opdoen?”
+      section {
+        display: flex;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+      }
 
-		“FDND is de enige HBO-opleiding voor Frontend Development in Nederland, in twee jaar stomen wij jou klaar voor het werkveld”
+      @supports (scrollbar-width: none) {
+        section {
+          scrollbar-width: none;
+        }
+      }
 
-		“Je werkt bij ons aan échte projecten voor échte opdrachtgevers”
+      button {
+        position: absolute;
+        bottom: 2em;
+        padding: 0.75em 2em;
+        border: 1px solid transparent;
+        border-radius: 0.5rem;
+        font-family: inherit;
+        font-size: inherit;
+        text-decoration: none;
+        color: var(--green);
+        background: var(--blue);
+        cursor: pointer;
+      }
 
-		“In het studiomodel werken studenten onder begeleiding van coaches en experts uit het vakgebied aan praktijkgerichte opdrachten”
+      button:first-of-type {
+        left: 2em;
+      }
 
-		“Bij FDND leer je websites bouwen en andere belangrijke skills die jij in de praktijk toe kan passen”
+      button:nth-of-type(2) {
+        right: 2em;
+      }
 
-		“Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5”
+      /* Hint: welk layout model is handig om content naast elkaar te zetten? */
+    </style>
+    <script type="module">
+      /* Schrijf hier eventueel je client-side JavaScript */
 
-		-->
+      /* Schrijf hier eventueel je client-side JavaScript */
+      const prevButton = document.querySelector(".previous");
+      const nextButton = document.querySelector(".next");
 
-		<details open>
-			<summary>Demo video</summary>
-			<video src="assets/carrousel.mp4" width="1298" height="469" controls muted autoplay loop>
-				<a href="assets/carrousel.mp4">assets/carrousel.mp4</a>
-			</video>
-		</details>
-	</body>
+      prevButton.addEventListener("click", function () {
+        carrousel.scrollBy({
+          left: -carrousel.offsetWidth,
+          behavior: "smooth",
+        });
+      });
+
+      nextButton.addEventListener("click", function () {
+        carrousel.scrollBy({
+          left: carrousel.offsetWidth,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Carrousel</h1>
+
+    <section>
+      <article>
+        <blockquote>
+          “Websites leren bouwen, én praktijkervaring opdoen?”
+        </blockquote>
+      </article>
+      <article>
+        <blockquote>
+          “FDND is de enige HBO-opleiding voor Frontend Development in
+          Nederland, in twee jaar stomen wij jou klaar voor het werkveld”
+        </blockquote>
+      </article>
+
+      <article>
+        <blockquote>
+          “Je werkt bij ons aan échte projecten voor échte opdrachtgevers”
+        </blockquote>
+      </article>
+
+      <article>
+        <blockquote>
+          “In het studiomodel werken studenten onder begeleiding van coaches en
+          experts uit het vakgebied aan praktijkgerichte opdrachten”
+        </blockquote>
+      </article>
+
+      <article>
+        <blockquote>
+          “Bij FDND leer je websites bouwen en andere belangrijke skills die jij
+          in de praktijk toe kan passen”
+        </blockquote>
+      </article>
+
+      <article>
+        <blockquote>
+          “Een Associate degree-opleiding is een tweejarige hbo-opleiding op
+          niveau 5”
+        </blockquote>
+      </article>
+    </section>
+
+    <button class="previous">Vorige</button>
+    <button class="next">Volgende</button>
+
+    <details closed>
+      <summary>Demo video</summary>
+      <video
+        src="assets/carrousel.mp4"
+        width="1298"
+        height="469"
+        controls
+        muted
+        autoplay
+        loop
+      >
+        <a href="assets/carrousel.mp4">assets/carrousel.mp4</a>
+      </video>
+    </details>
+  </body>
 </html>
