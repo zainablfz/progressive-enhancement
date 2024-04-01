@@ -1,35 +1,142 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
-	<head>
-		<meta charset="utf-8">
-		<title>Mobiel menu / Progressive Enhancement / FDND</title>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<link href="assets/styles.css" rel="stylesheet">
-		<style>
-			/* Schrijf hier gewoon je CSS voor dit component */
+  <head>
+    <meta charset="utf-8" />
+    <title>Mobiel menu / Progressive Enhancement / FDND</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/styles.css" rel="stylesheet" />
+    <style>
+      /* Schrijf hier gewoon je CSS voor dit component */
 
-			/* Hint: kijk eens naar :target */
-		</style>
-		<script type="module">
-			/* Schrijf hier eventueel je client-side JavaScript */
+      /* Hint: kijk eens naar :target */
 
-			/* Hint: dit component kan volledig met CSS, maar met JS kun je 'm helemaal afmaken */
-		</script>
-	</head>
-	<body>
-		<main>
-			<h1>Mobiel menu</h1>
-			
-			<!-- Hint: Wat heb je nodig, als je op een klein scherm naar het menu wilt? -->
+	  body {
+				margin: 0;
+				padding: 0;
+			}
 
-			<details open>
-				<summary>Demo video</summary>
-				<video src="assets/menu.mp4" width="773" height="863" controls muted autoplay loop>
-					<a href="assets/menu.mp4">assets/menu.mp4</a>
-				</video>
-			</details>
+			main {
+				margin-left: 0.5rem;
+			}
 
-			<!-- Deze tekst kun je gebruiken, zodat de pagina wat langer wordt
+			h1 {
+				margin-left: 0.5rem;
+			}
+
+			main a {
+				color: var(--green);
+				text-decoration: none;
+				border-radius: 0.3rem;
+				padding: 0.3rem;
+			}
+
+			nav {
+				background-color: var(--green);
+				height: 100vh;
+				width: 55vw;
+				transition: 0.5s ease-out;
+    			transform: translateX(-100%); 
+				z-index: 1; 
+				position: fixed;
+    			inset: 0;
+   				right: 100%;
+			}
+
+			nav ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				padding-top: 5rem;
+			}
+			nav ul li {
+				cursor: pointer;
+				display: block; 
+					
+			}
+
+			nav ul li a {
+				display: block;
+				text-decoration: none;
+				color: var(--blue);
+				font-weight: 700;
+				padding: 1rem;
+			}
+
+			nav a.close {
+				position: absolute;
+				right: 2rem;
+				top: 2rem;
+			}
+
+			nav a.close:active {
+				border: 0.1rem solid black;
+				padding: 0.3rem;
+				border-radius: 1.5rem;
+			}
+
+			/* interactie in- en -uitklappen van menu */
+			nav:target {
+    			transform: translateX(0);
+			}
+
+			nav:target + main {
+				background: grey 80%;
+			}
+
+			nav ul li:hover{
+				background-color: var(--blue);
+			}
+
+			nav ul li a:hover {
+				color: var(--green);
+			}
+
+			nav ul li:focus, nav ul li a:focus {
+				color: var(--green);
+				background-color: var(--blue);
+			}
+    </style>
+    <script type="module">
+      /* Schrijf hier eventueel je client-side JavaScript */
+
+      /* Hint: dit component kan volledig met CSS, maar met JS kun je 'm helemaal afmaken */
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Mobiel menu</h1>
+
+      <!-- Hint: Wat heb je nodig, als je op een klein scherm naar het menu wilt? -->
+
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="faq.html">Veelgestelde vragen</a></li>
+          <li><a href="switch.html">Switch control</a></li>
+          <li><a href="menu.html">Mobiel menu</a></li>
+          <li><a href="rating.html">Rating</a></li>
+          <li><a href="carrousel.html">Carrousel</a></li>
+          <li><a href="pickers.html">Favorieten picker</a></li>
+          <li><a href="tabs.html">Tabbladen</a></li>
+          <li><a href="file.html">File image upload met preview</a></li>
+        </ul>
+
+        <a class="close" href="#" aria-label="homepage">
+          <svg viewBox="0 0 32 32" width="32" height="32">
+            <title>Sluiten</title>
+            <path
+              d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"
+            ></path>
+          </svg>
+        </a>
+      </nav>
+
+	  <main>
+			<a href="#menu">Menu</a>
+
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum eget elit eu tincidunt. Donec gravida nulla at justo sollicitudin, hendrerit faucibus diam tincidunt. Pellentesque porta neque quis nunc laoreet congue. Sed porttitor nec tellus nec semper. Cras pharetra dictum risus ut sagittis. Aliquam in iaculis arcu. Nulla sit amet diam sit amet mauris placerat laoreet eu vel turpis. Vivamus ac massa ut diam gravida elementum ut nec nulla. Integer vel felis massa. Quisque facilisis enim ornare ultricies mattis. Fusce porta rhoncus ex. Nunc viverra orci at leo fermentum convallis. Morbi sodales, lectus congue aliquam maximus, metus ipsum placerat turpis, vitae venenatis metus erat vel eros. Vestibulum lobortis accumsan elit nec maximus. Vivamus mollis ullamcorper felis, id aliquet tellus volutpat at.</p>
 			<p>In ante sem, faucibus sit amet nisl ut, efficitur mattis augue. Aenean fringilla lorem id metus ultrices bibendum. Quisque eleifend enim purus, eu bibendum mauris blandit nec. Donec vitae purus sed eros ullamcorper vehicula sit amet eu massa. Vestibulum eget mi vel tellus pharetra convallis quis quis nunc. Maecenas bibendum neque sit amet neque ultrices sollicitudin. Donec viverra arcu nec urna accumsan pharetra. Donec pharetra lacinia elementum.</p>
 			<p>Aliquam auctor diam ut ipsum mattis semper. Praesent auctor quam ut libero aliquet, at gravida nunc aliquam. Duis mollis faucibus nisi at fringilla. Vestibulum at vulputate tortor, eget consequat libero. Praesent non ante libero. Praesent imperdiet neque at lacus mattis, at tincidunt odio ullamcorper. In massa metus, iaculis id vulputate vel, aliquam eu sem. Nulla varius lorem ut justo consectetur consectetur. Nulla viverra, metus in dapibus facilisis, magna sapien lobortis urna, vel mattis sapien velit at nisi. Nullam semper est lorem, id lobortis est blandit gravida. Nulla purus orci, aliquet ac purus at, eleifend ultricies dolor. Vivamus lobortis lectus quis augue molestie congue. Morbi vel libero ac ex sagittis euismod vitae eu dolor. Nunc sed libero enim. Duis at lacus et est fermentum ullamcorper et non eros. Ut semper auctor commodo.</p>
@@ -44,31 +151,22 @@
 			<p>Aenean neque sem, scelerisque interdum sem ut, pulvinar aliquam est. Aenean gravida augue dui, nec egestas erat euismod ut. Curabitur et tortor mi. Ut sed dictum nibh, at ultrices purus. Maecenas in dolor vitae erat tincidunt tempor sed vel arcu. Aenean ullamcorper vitae libero mattis sollicitudin. In ultrices condimentum ante ac congue. Nullam pellentesque dolor in ante placerat, sed dignissim ligula congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in semper lacus, eget venenatis tellus.</p>
 			<p>Fusce congue elit eget sapien hendrerit, sollicitudin fermentum nisi tempor. Cras semper mi id lacus pharetra tincidunt. Aliquam scelerisque facilisis tempus. Quisque sed dui nec lectus pulvinar porta. Cras eget consectetur diam. Pellentesque vel congue neque. Nam arcu mauris, pretium vitae enim et, ornare finibus purus. Nam maximus libero feugiat, faucibus massa vitae, ultricies est. Aenean mattis viverra dui, sit amet aliquet neque sagittis eu. Praesent quis volutpat eros, nec hendrerit turpis. Nullam vel blandit metus, ac placerat tellus. Mauris leo nulla, efficitur a neque non, vestibulum dictum diam. Nam vestibulum tortor eu eros viverra mattis. Sed eu urna id lacus maximus luctus quis et neque.</p>
 			<p>Duis maximus lacinia mattis. Fusce fermentum dignissim sem, ut sollicitudin libero consequat nec. Quisque a vestibulum augue. Sed sit amet purus in tellus congue viverra quis id magna. Maecenas iaculis purus placerat ligula aliquet aliquam. Proin molestie mattis faucibus. Cras a volutpat dui, ut pulvinar tellus.</p>
-			<p>Suspendisse malesuada, nulla eget iaculis fermentum, libero dolor vestibulum urna, ut auctor dolor diam ut dolor. Nullam mollis congue luctus. Fusce nulla dolor, faucibus nec volutpat eget, consequat quis nisl. Cras id diam efficitur, congue lectus ac, vulputate leo. Morbi odio velit, finibus id ornare sit amet, luctus ut eros. Fusce fringilla eu diam quis tempor. Proin pretium purus a fringilla semper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin lorem diam, laoreet at lectus quis, lobortis tempor tortor. Vivamus semper, ex convallis iaculis suscipit, risus augue bibendum sapien, nec volutpat lacus quam finibus arcu. Nunc non consectetur eros, eu viverra metus. Aliquam nisl risus, condimentum et sapien id, rutrum interdum odio. Nulla facilisi. Ut ac egestas quam.</p>
-			-->
+			<p>Suspendisse malesuada, nulla eget iaculis fermentum, libero dolor vestibulum urna, ut auctor dolor diam ut dolor. Nullam mollis congue luctus. Fusce nulla dolor, faucibus nec volutpat eget, consequat quis nisl. Cras id diam efficitur, congue lectus ac, vulputate leo. Morbi odio velit, finibus id ornare sit amet, luctus ut eros. Fusce fringilla eu diam quis tempor. Proin pretium purus a fringilla semper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin lorem diam, laoreet at lectus quis, lobortis tempor tortor. Vivamus semper, ex convallis iaculis suscipit, risus augue bibendum sapien, nec volutpat lacus quam finibus arcu. Nunc non consectetur eros, eu viverra metus. Aliquam nisl risus, condimentum et sapien id, rutrum interdum odio. Nulla facilisi. Ut ac egestas quam.</p>	
 		</main>
 
-		<!-- Dit is het menu
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="faq.html">Veelgestelde vragen</a></li>
-				<li><a href="switch.html">Switch control</a></li>
-				<li><a href="menu.html">Mobiel menu</a></li>
-				<li><a href="rating.html">Rating</a></li>
-				<li><a href="carrousel.html">Carrousel</a></li>
-				<li><a href="pickers.html">Favorieten picker</a></li>
-				<li><a href="tabs.html">Tabbladen</a></li>
-				<li><a href="file.html">File image upload met preview</a></li>
-			</ul>
-		</nav>
-		-->
-
-		<!-- Dit is eventueel het 'Sluiten' icoon
-		<svg viewBox="0 0 32 32" width="32" height="32">
-			<title>Sluiten</title>
-			<path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path>
-		</svg>
-		-->
-	</body>
+		      <details closed>
+        <summary>Demo video</summary>
+        <video
+          src="assets/menu.mp4"
+          width="773"
+          height="863"
+          controls
+          muted
+          autoplay
+          loop
+        >
+          <a href="assets/menu.mp4">assets/menu.mp4</a>
+        </video>
+      </details>
+		</body>
 </html>
